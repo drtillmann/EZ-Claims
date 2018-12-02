@@ -1,0 +1,44 @@
+extends layout
+
+
+block content
+    div(id= 'table-div')                 
+        each item in items
+            block variables
+                - var filePathToChange = item.Product_URL;
+                - var filePath = filePathToChange.replace("\\", "/");
+            form(id='form-'+item._id, action= "/item/"+item._id, method= "POST")
+                table(class= 'tbl_inventory')
+                    tr
+                        th Product Image
+                        th Name
+                        th Room
+                        th Price
+                        th Model Number
+                        th Serial Number
+                        th Purchase Location
+                    tr
+                        td
+                            img.image(src= "/"+item.Product_URL, alt="Product Image", width= "50px", height= "125px")
+                        td  
+                            input(name= 'Name' value= item.Name)
+                        td
+                            input(name= 'Room' value= item.Room)
+                        td
+                            input(name= 'Price' value= item.Price)
+                        td
+                            input(name= 'ModelNum' value= item.ModelNum)
+                        td
+                            input(name= 'SerialNum' value= item.SerialNum)
+                        td
+                            input(name= 'Purchase_Location' value= item.Purchase_Location)
+                        td
+                            input(name= 'url', value= "/" + item.Product_URL, id= 'url')
+                        td
+                            button(form='form-'+ item._id, type='submit') Update
+                        td
+                            a.delete(href= '/item/delete/' + item._id) Delete
+                                
+                    
+        
+        

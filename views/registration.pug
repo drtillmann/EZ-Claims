@@ -1,0 +1,30 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+  div(id= "title-div")
+        h1= title
+  div(id= "login-div")
+    form(action= "/registration/signup", method="POST")
+        table(id= "login-table" type= "form")
+            tr
+                td(class= "label") 
+                    label(for="txt_Email") Email:
+            tr
+                td
+                    input(id= "txt_Email" name= "email" type="email" hint="email")
+            tr
+                td(class= "label")
+                    label(for="txt_Password") Password:
+            tr
+                td
+                    input(id= "txt_Password" name= "password" type="password" hint="password")
+            tr
+                td(class= "label")  
+                    label(for="txt_Name") Full Name:
+            tr
+                td 
+                    input(id= "txt_Name" name= "name" type="text")
+      
+        button(type= "submit") Register

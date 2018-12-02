@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link( rel='shortcut icon' type='image/x-icon' href='/images/logos/ms-icon-310x310.png' )
+  body
+    div(class= 'logo-div')
+      a(href="/home")
+        img(id= 'logo' src="/images/logos/logo.png", alt="EZ Claims Logo")
+    div(id= "nav-div")
+      nav(id= "nav-bar")
+        a(href="/home/") Home
+        p= " | "
+        a(href= "/item/inventory/") View Inventory
+        p= " | "
+        a(href= "/item") Add Items
+        p= " | "
+        a(href= "/item/add-recipients") Share Inventory Reports
+        p= " | "
+        a(href= "/user/logout") Logout
+    block content

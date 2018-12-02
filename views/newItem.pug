@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    div(id= 'new-item-div')
+    form(action= '/item/newItem', method= "POST" enctype="multipart/form-data")
+        table(id= "login-table" type= "form")
+            tr
+                td(class= "label") 
+                    label(for="txt_Name") Product Name:
+            tr
+                td
+                    input(id= "txt_Name" name= "Name" type="text")
+            tr
+                td(class= "label")
+                    label(for="txt_Room") Room:
+            tr
+                td
+                    //input(id= "txt_Room" name= "Room" type="text")
+                    select(name="Room")
+                        option(value="Living Room") Living Room
+                        option(value="Bedroom 1") Bedroom 1
+                        option(value="Bedroom 2") Bedroom 2
+                        option(value="Bedroom 3") Bedroom 3
+                        option(value="Master Bedroom") Master Bedroom
+                        option(value="Basement") Basement
+                        option(value="Utility Room") Utility Room
+                        option(value="Basement Bathroom") Basement Bathroom
+                        option(value="Master Bath") Master Bath
+                        option(value="Garage") Garage
+            tr
+                td(class= "label")  
+                    label(for="txt_Price") Price:
+            tr
+                td 
+                    input(id= "txt_Price" name= "Price" type="text")
+            tr
+                td(class= "label")  
+                    label(for="txt_ModelNum") Model Number:
+            tr
+                td 
+                    input(id= "txt_ModelNum" name= "ModelNum" type="text")
+            tr
+                td(class= "label")  
+                    label(for="txt_SerialNum") Serial Number:
+            tr
+                td 
+                    input(id= "txt_SerialNum" name= "SerialNum" type="text")
+            tr
+                td(class= "label")  
+                    label(for="txt_Purchase_Location") Purchase Location:
+            tr
+                td 
+                    input(id= "txt_Purchase_Location" name= "Purchase_Location" type="text")
+            tr
+                td
+                    input(type= 'file' name= 'productImage' id= 'productImage')
+            
+        button(type= "submit") Add

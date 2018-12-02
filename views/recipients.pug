@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div(id= 'email-address-div')
+        form(id= 'frm_emails' action= '/item/share?emails=', method= 'GET')
+            table(id= 'tbl_emails' class='table')
+                tr
+                    td      
+                        label(for="txt_emails") Enter 1 or more email addresses.
+                tr
+                    td   
+                        textarea(id= 'txt_emails' name="emails", cols="50", rows="10") 
+            
+            button(type= 'submit' form= 'frm_emails') Share

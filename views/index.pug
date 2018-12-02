@@ -1,0 +1,31 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link( rel='shortcut icon' type='image/x-icon' href='/images/logos/ms-icon-310x310.png' )
+  body
+  div(class= 'logo-div')
+    img(id= 'logo' src="/images/logos/logo.png", alt="EZ Claims Logo")
+  div(id= "title-div")
+        h1= title
+  div(id= "login-div")
+  form(id= "frm_Login" action="/user/login", method= "POST")
+    table(id= "login-table" type= "form")
+      tr
+        td(class= "label") 
+          label(for="txt_Email") Email:
+      tr
+        td
+          input(id= "txt_Email" name= "email" type="email" hint="email")
+      tr
+        td(class= "label")
+          label(for="txt_Password") Password:
+      tr
+        td
+          input(id= "txt_Password" name= "password" type="password" hint="password")
+        
+    button(for= "frm_Login" id= "btn_Login" type= "submit") Login
+  br
+  br
+  a(href="/registration")
+    button(id= "btn_Register") Register
