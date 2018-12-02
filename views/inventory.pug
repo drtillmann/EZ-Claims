@@ -2,7 +2,10 @@ extends layout
 
 
 block content
-    div(id= 'table-div')                 
+    div(id= 'table-div')      
+        if items.length == 0
+            p(id= 'no-inventory') No Inventory
+        else         
         each item in items
             block variables
                 - var filePathToChange = item.Product_URL;

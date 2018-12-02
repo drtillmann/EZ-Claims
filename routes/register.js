@@ -8,8 +8,10 @@ const User = require('../models/userModel');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('registration', { title: strings.registration });
-  console.log("enterd / route");
+  console.log("enterd '/' route");
 });
+
+
 
 
 router.post('/signup', (req, res, next)=>{
