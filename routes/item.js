@@ -22,10 +22,10 @@ const fileFilter = (req, file, cb) => {
 }
 
 const upload = multer( {storage: storage,
-    /*
+    
     limits: {
         fileSize: 2048 * 2048 * 5
-    },*/
+    },
     fileFilter: fileFilter
     
 });
@@ -35,7 +35,7 @@ var pdfDoc = require('pdfkit');
 var fs = require('fs');
 const nodemailer = require('nodemailer');
 var math = require('mathjs');
-
+//var fixOrientation = require('fix-orientation');
 
 router.get('/', function(req, res, next) {
     if(globalUserID == undefined){
@@ -116,11 +116,19 @@ router.get('/inventory', (req, res, next) => {
         .then(docs => {
             console.log("document info from the DB", docs);
             if (docs) {
-                /*
-                res.status(200).json({
-                    Items: docs
+/*
+                docs.forEach(function(element){
+                    var url = element.Product_URL;
+ 
+                fixOrientation(url, { image: true }, function (fixed, image) {
+                    var img = new Image();
+                    img.src = fixed;
+                    document.body.appendChild(img);
+                    document.body.appendChild(image);
+                    });    
                 });
                 */
+
                 res.render('inventory', {title: 'Inventory List', items: docs});
             } else {
                 res.render('message', {title: "No Items", message: "No items found associated with that User ID."});

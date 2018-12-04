@@ -20,9 +20,9 @@ block content
                         th Model Number
                         th Serial Number
                         th Purchase Location
-                    tr
+                    tr.inventory-row
                         td
-                            img.image(src= "/"+item.Product_URL, alt="Product Image", width= "50px", height= "125px")
+                            img.image( class= 'rotate', id= 'product-image', src= "/"+item.Product_URL, alt="Product Image")
                         td  
                             input(name= 'Name' value= item.Name)
                         td

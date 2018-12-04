@@ -83,6 +83,10 @@ td {
   padding-top: 5px;
 }
 
+.inventory-row {
+  height: 252px;
+}
+
 .label {
   text-align: left;
   padding-bottom: 0px;
@@ -135,4 +139,18 @@ button {
 
 button {
   font-size: 18px;
+}
+
+#product-image {
+  width: 252px;
+  height: 123px;
+  image-orientation: from-image; /* Use EXIF data from the image */
+}
+
+.rotate {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  display: block;
+  padding-bottom: 10px;
 }
