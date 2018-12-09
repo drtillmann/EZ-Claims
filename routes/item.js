@@ -286,7 +286,7 @@ router.get('/share', (req, res, next) => {
     
                     // setup email data with unicode symbols
                     let mailOptions = {
-                        from: '"Daniel Tillmann" <scsu.project.email@gmail.com>', // sender address
+                        from: '"EZ Claims" <scsu.project.email@gmail.com>', // sender address
     
                         to: emails, //drtillmann@stcloudstate.edu, anas.abdulahi3@gmail.com', // list of receivers
     
