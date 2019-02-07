@@ -23,6 +23,8 @@ router.post('/login', (req, res, next)=>{
 
             /* IMPLEMENT LOGIN VALIDATION HERE */
 
+            
+
 
             bcrypt.compare(req.body.password, user[0].password, function(err, result){
                 console.log(result.valueOf());
