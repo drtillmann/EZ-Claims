@@ -5,5 +5,7 @@ npm install
 
 npm i bcrypt
 
+npm install --save watson-developer-cloud
+
 npm start
 
