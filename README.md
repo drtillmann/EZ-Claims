@@ -5,7 +5,7 @@ npm install
 
 npm i bcrypt
 
-npm install --save watson-developer-cloud
+npm i @google-cloud/vision
 
 npm start
 
