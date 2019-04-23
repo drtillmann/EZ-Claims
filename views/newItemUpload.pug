@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div(id= 'new-item-upload-div')
+    form(action="/item/getLabels" method='POST' enctype="multipart/form-data")
+        table(id='login-table' type='form')
+            tr
+                td
+                    input(type='file' name='productImage')
+        button(type='submit') Upload

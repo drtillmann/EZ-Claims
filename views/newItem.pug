@@ -2,8 +2,25 @@ extends layout
 
 block content
     div(id= 'new-item-div')
-    form(action= '/item/newItem', method= "POST" enctype="multipart/form-data")
+    form(action= '/item/newItem', method= "POST")
         table(id= "login-table" type= "form")
+            //tr
+                td
+                    form(action= '/item/getLabels', method= 'POST', enctype= 'multipart/form-data')
+                        input(type= 'file' name= 'productImage' id= 'productImage' value= uploaded)
+                        button(type= 'submit') Upload image
+            tr
+                td
+                    img(src='/images/'+uploaded height="500")     
+            tr
+                td
+                    input(id= "txt_imagePath" name="ProductImage" type="text" value='images/'+uploaded hidden)
+            tr  
+                td
+                    if (labels && labels.length > 0)
+                        select(name="Dropdown" required) Product Type:
+                            each label in labels
+                                option=label.description
             tr
                 td(class= "label") 
                     label(for="txt_Name") Product Name:
@@ -51,8 +68,5 @@ block content
             tr
                 td 
                     input(id= "txt_Purchase_Location" name= "Purchase_Location" type="text")
-            tr
-                td
-                    input(type= 'file' name= 'productImage' id= 'productImage')
             
         button(type= "submit") Add

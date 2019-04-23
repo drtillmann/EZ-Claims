@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
+const vision = require('@google-cloud/vision');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -41,35 +42,60 @@ router.get('/', function(req, res, next) {
     if(globalUserID == undefined){
         res.redirect("/")
     }else{
-        res.render('newItem', { title: 'Add New Item' });
+        res.render('newItemUpload', { title: 'Add New Item'});
         console.log("entered '/' item route");
     }
   });
 
+router.post('/getLabels', upload.single('productImage'), (req, res, next) => {
+    if(globalUserID == undefined){
+        res.redirect('/')
+    }else{
+        const client = new vision.ImageAnnotatorClient({
+            projectId: 'EZ-Claim',
+            keyFilename: './keys/APIkey.json'
+        })
+
+        client
+            .labelDetection(req.file.path)
+            .then(results => {
+                const arr = results[0].labelAnnotations
+
+                console.log('Labels:');
+                arr.forEach(label => console.log(label.description));
+                
+                res.render('newItem', { title: 'Add New Item', labels: arr, uploaded: req.file.originalname})
+            })
+            .catch(err => {
+                console.error('ERROR:', err);
+            });
+    }
+})
+
 //Save a single item
-router.post('/newitem', upload.single('productImage'), (req, res, next) => {
+router.post('/newitem', (req, res, next) => {
 
     if(globalUserID == undefined){
         res.redirect("/")
     }else{
 
-        console.log(req.file);
         const item = new Item({
         _id: new mongoose.Types.ObjectId(),
-        Name: req.body.Name,
+        Name: req.body.Dropdown + ':' + req.body.Name,
         Room: req.body.Room,
         Price: req.body.Price,
         ModelNum: req.body.ModelNum,
         SerialNum: req.body.SerialNum,
         Purchase_Location: req.body.Purchase_Location,
         //Receipt_URL: req.body.Receipt_URL,
-        Product_URL: "images/" + req.file.originalname,//filePath,//req.file.path,
+        Product_URL: req.body.ProductImage,
         UserID: globalUserID
         });
 
         item.save().then(result => {
         console.log(result);
         res.render('success-message', {title: "Item Added", message: "Item Added Successfully!"});
+        console.log('What happen???')
         
         }).catch(err => {
         console.log(err);
