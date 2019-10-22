@@ -76,3 +76,5 @@ node_modules/.bin/atob.cmd
 node_modules/.bin/atob
 Inventory.xlsx
 Inventory.pdf
+node_modules
+node_modules

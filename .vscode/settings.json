@@ -1,0 +1,9 @@
+{
+    "git.ignoreLimitWarning": true,
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/8a52d5ff-5afb-4767-842e-d920313fc61b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/ez-claims-wa",
+    "appService.deploySubpath": ""
+}
